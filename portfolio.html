@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nishar Patel | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Cool & Peaceful Color Palette */
+        :root {
+            --bg-color: #f0f8ff; /* Alice Blue */
+            --header-footer-bg: #ffffff;
+            --text-main: #2c3e50;
+            --accent-color: #00838f; /* Cool Teal */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 8px 15px rgba(0, 131, 143, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header & Navigation Bar */
+        header {
+            background-color: var(--header-footer-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        nav button:hover, nav button.active {
+            color: var(--accent-color);
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content Container */
+        main {
+            flex: 1;
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Page Sections - ALL CENTERED */
+        .page-section {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Home Page */
+        .home-container {
+            margin-top: 5vh;
+        }
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .profile-pic:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .welcome-line {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        /* About & General Text */
+        .page-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8; 
+            text-align: justify; 
+            padding: 0 1rem;
+        }
+        .page-section p.center-text {
+            text-align: center; 
+        }
+
+        /* Education Table */
+        table {
+            width: 100%;
+            max-width: 900px;
+            margin: 1.5rem auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        tbody tr {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        tbody tr:hover {
+            background-color: #e0f2f1;
+            transform: scale(1.01);
+            cursor: default;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 650px;
+            margin: 2rem auto;
+        }
+        .skill-tag {
+            background-color: white;
+            color: var(--accent-color);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid #e0f2f1;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .skill-tag:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* Hobbies */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem; 
+            max-width: 600px; 
+            margin: 1rem auto;
+        }
+        .hobby-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding-bottom: 0.5rem;
+            transition: all 0.4s ease;
+        }
+        .hobby-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        }
+        .hobby-card .img-container {
+            width: 100%;
+            height: 160px; 
+            overflow: hidden;
+            border-bottom: 3px solid var(--accent-color);
+            background-color: #f8f9fa; /* Light background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hobby-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: transform 0.5s ease;
+        }
+        
+        .hobby-card:hover img {
+            transform: scale(1.1);
+        }
+        .hobby-card h3 {
+            margin-top: 0.8rem;
+            font-size: 1rem; 
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+        .hobby-card:hover h3 {
+            color: var(--accent-color);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        .btn:hover {
+            background-color: #005662;
+            transform: translateY(-4px);
+            box-shadow: var(--hover-shadow);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Special LinkedIn Button styling */
+        .btn-linkedin {
+            background-color: #0077b5; /* Official LinkedIn Blue */
+            margin-top: 3rem; /* Increased margin to push it further down */
+            padding: 0.8rem 2.5rem; /* Adjusted padding for better look */
+        }
+        .btn-linkedin:hover {
+            background-color: #005582;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s ease;
+        }
+        .contact-form:hover {
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .contact-form input:hover, .contact-form textarea:hover {
+            border-color: #888;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 131, 143, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-footer-bg);
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+            margin-top: auto;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav {
+                justify-content: center;
+            }
+            .hobbies-grid {
+                grid-template-columns: 1fr; 
+                height: auto;
+            }
+            .welcome-line {
+                font-size: 1.8rem;
+            }
+            .page-section p {
+                text-align: left; 
+            }
+            .btn-linkedin {
+                margin-top: 2rem; /* Adjusted for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Nishar Patel</div>
+        <nav>
+            <button class="nav-btn active" onclick="openPage('home', this)">Home</button>
+            <button class="nav-btn" onclick="openPage('about', this)">About Me</button>
+            <button class="nav-btn" onclick="openPage('education', this)">Education</button>
+            <button class="nav-btn" onclick="openPage('skills', this)">Skills</button>
+            <button class="nav-btn" onclick="openPage('hobbies', this)">Hobbies</button>
+            <button class="nav-btn" onclick="openPage('resume', this)">Resume</button>
+            <button class="nav-btn" onclick="openPage('contact', this)">Contact</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="page-section active">
+            <div class="home-container">
+                <img src="pic.png" alt="Profile Picture" class="profile-pic">
+                <h1 class="welcome-line">Hello! I'm Nishar Patel.</h1>
+                <p class="center-text">Welcome to my personal portfolio website.</p>
+                
+                <a href="https://www.linkedin.com/in/nishar-patel-8810a3365?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn btn-linkedin">Connect on LinkedIn</a>
+            </div>
+        </section>
+
+        <section id="about" class="page-section">
+            <h2>About Me</h2>
+            <p>Hi! I am Nishar Patel from Rajkot-Gujrat(India), currently pursuing my degree in Computer Engineering. I am a passionate and dedicated student with a strong interest in technology, programming, and innovation. I enjoy learning new concepts, improving my technical skills, and exploring the latest trends in the digital world. I have a keen interest in web development, software creation, and problem solving, which motivates me to continuously grow and challenge myself. Along with academics, I believe in discipline, teamwork, and consistent self-improvement. I enjoy working on creative projects that help me gain practical knowledge and real-world experience. My goal is to become a skilled software engineer, contribute to meaningful technological solutions, and build a successful career through hard work, learning, and determination.</p>
+        </section>
+
+        <section id="education" class="page-section">
+            <h2>Education</h2>
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Course / Exam</th>
+                            <th>Institution</th>
+                            <th>Passing Year</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>B.Tech (Computer Engineering)</td>
+                            <td>Birla Vishwakarma Mahavidyalaya</td>
+                            <td>Pursuing</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>HSC (12th Science)</td>
+                            <td>State Higher Secondary Board</td>
+                            <td>2025</td>
+                            <td>91.33%</td>
+                        </tr>
+                        <tr>
+                            <td>SSC (10th Standard)</td>
+                            <td>State Secondary Board</td>
+                            <td>2023</td>
+                            <td>88%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="skills" class="page-section">
+            <h2>My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-tag">C Programming</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">XHTML & CSS</div>
+                <div class="skill-tag">Problem Solving</div>
+                <div class="skill-tag">Canva</div>
+                <div class="skill-tag">Teamwork</div>
+                <div class="skill-tag">Communication</div>
+            </div>
+        </section>
+
+        <section id="hobbies" class="page-section">
+            <h2>Hobbies</h2>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80" alt="Professional Computer Books">
+                    </div>
+                    <h3>Reading Books</h3>
+                </div>
+                <div class="hobby-card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=600&q=80" alt="Listening Sufi Music">
+                    </div>
+                    <h3>Listening Sufi Music</h3>
+                </div>
+                <div class="hobby-card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Exploring Technology">
+                    </div>
+                    <h3>Exploring Technology</h3>
+                </div>
+                <div class="hobby-card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=600&q=80" alt="Traveling">
+                    </div>
+                    <h3>Traveling</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="page-section">
+            <h2>Resume</h2>
+            <p class="center-text">Click the button below to view my complete resume.</p>
+            <br>
+            <a href="/resume.html" target="_blank" class="btn">View Resume</a>
+        </section>
+
+        <section id="contact" class="page-section">
+            <h2>Contact Me</h2>
+            <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Message Sent Successfully!');">
+                <input type="text" name="name" placeholder="Your Full Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Nishar Patel. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openPage(pageId, buttonElement) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(pageId).classList.add('active');
+            buttonElement.classList.add('active');
+            
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
